@@ -76,7 +76,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
-            android:id="@+id/chechbox_wrapper"
+            android:id="@+id/checkbox_wrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -84,19 +84,19 @@
             app:layout_constraintStart_toStartOf="@id/confirm_password_field_layout"
             app:layout_constraintTop_toBottomOf="@id/confirm_password_field_layout">
 
-            <CheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cb1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cb1" />
 
-            <CheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cb2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cb2" />
 
-            <CheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cb3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,9 +112,9 @@
             android:layout_marginBottom="16dp"
             android:orientation="vertical"
             android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@id/chechbox_wrapper"
-            app:layout_constraintStart_toStartOf="@id/chechbox_wrapper"
-            app:layout_constraintTop_toBottomOf="@id/chechbox_wrapper">
+            app:layout_constraintEnd_toEndOf="@id/checkbox_wrapper"
+            app:layout_constraintStart_toStartOf="@id/checkbox_wrapper"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_wrapper">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -127,28 +127,28 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rb1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/rb1" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rb2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/rb2" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/rb3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/rb3" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:checked="true"
                     android:visibility="gone"
                     android:id="@+id/rb4"
@@ -166,7 +166,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/enter_button"
-            android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="@id/radio_wrapper"
             app:layout_constraintStart_toStartOf="@id/radio_wrapper"
             app:layout_constraintTop_toBottomOf="@id/radio_wrapper" />

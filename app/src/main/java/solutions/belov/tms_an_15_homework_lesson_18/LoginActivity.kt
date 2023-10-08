@@ -1,35 +1,32 @@
 package solutions.belov.tms_an_15_homework_lesson_18
 
-import android.R.attr.value
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.CompoundButton
-import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
 import solutions.belov.tms_an_15_homework_lesson_18.databinding.ActivityLoginBinding
 
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var binding: ActivityLoginBinding
-    var cb1 = false
-    var cb2 = false
-    var cb3 = false
-    var rb = ""
-
+    private lateinit var binding: ActivityLoginBinding
+    private var cb1 = false
+    private var cb2 = false
+    private var cb3 = false
+    private var rb = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val rg = binding.radioGroup
-        rg.setOnCheckedChangeListener { group, checkedId ->
-            when (rg.checkedRadioButtonId) {
+
+        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
                 R.id.rb1 -> {
                     rb = binding.rb1.text.toString()
                     Snackbar.make(group, getString(R.string.rb1_msg), Snackbar.LENGTH_LONG)
@@ -61,18 +58,18 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             if (isValidate()) {
                 val intent = Intent(this, WelcomeActivity::class.java)
-                intent.putExtra("LOGIN", binding.loginField.text.toString())
-                intent.putExtra("PASSWORD", binding.passwordField.text.toString())
-                intent.putExtra("CB1", cb1)
-                intent.putExtra("CB2", cb2)
-                intent.putExtra("CB3", cb3)
-                intent.putExtra("RB", rb)
+                intent.putExtra(LOGIN, binding.loginField.text.toString())
+                intent.putExtra(PASSWORD, binding.passwordField.text.toString())
+                intent.putExtra(CB1, cb1)
+                intent.putExtra(CB2, cb2)
+                intent.putExtra(CB3, cb3)
+                intent.putExtra(RB, rb)
                 startActivity(intent)
             }
         }
     }
 
-    val listener = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+    private val listener = CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
         when (buttonView.id) {
             R.id.cb1 -> {
                 cb1 = isChecked
@@ -85,12 +82,13 @@ class LoginActivity : AppCompatActivity() {
             R.id.cb3 -> {
                 if (isChecked) {
                     cb3 = true
-                    binding.radioWrapper.visibility = View.VISIBLE
+                    binding.radioWrapper.isVisible = true
                 } else {
-                    binding.radioWrapper.visibility = View.GONE
+                    cb3 = false
+                    binding.radioWrapper.isVisible = false
                     binding.rb4.isChecked = true
-                    //binding.radioGroup.setOnCheckedChangeListener(null)
                     //binding.radioGroup.clearCheck()
+                    //binding.radioGroup.setOnCheckedChangeListener(null)
                 }
             }
         }
@@ -120,58 +118,57 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun validateUserName(): Boolean {
-        if (binding.loginField.text.toString().trim().isEmpty()) {
+        return if (binding.loginField.text.toString().trim().isEmpty()) {
             binding.loginFieldLayout.error = getString(R.string.required_field)
             binding.loginField.requestFocus()
-            return false
+            false
         } else {
             binding.loginFieldLayout.isErrorEnabled = false
+            true
         }
-
-        return true
     }
 
     private fun validatePassword(): Boolean {
-        if (binding.passwordField.text.toString().trim().isEmpty()) {
+        return if (binding.passwordField.text.toString().trim().isEmpty()) {
             binding.passwordFieldLayout.error = getString(R.string.required_field)
             binding.passwordField.requestFocus()
-            return false
-        } else if (binding.passwordField.text.toString().length < 6) {
+            false
+        } else if (binding.passwordField.text.toString().length < MIN_LENGTH) {
             binding.passwordFieldLayout.error = getString(R.string.no_less)
             binding.passwordField.requestFocus()
-            return false
+            false
         } else {
             binding.passwordFieldLayout.isErrorEnabled = false
+            true
         }
-
-        return true
     }
 
     private fun validateConfirmPassword(): Boolean {
-        when {
+        return when {
             binding.confirmPasswordField.text.toString().trim().isEmpty() -> {
                 binding.confirmPasswordFieldLayout.error = getString(R.string.required_field)
                 binding.confirmPasswordField.requestFocus()
-                return false
+                false
             }
 
             binding.confirmPasswordField.text.toString() != binding.passwordField.text.toString() -> {
                 binding.confirmPasswordFieldLayout.error = getString(R.string.do_not_match)
                 binding.confirmPasswordField.requestFocus()
-                return false
+                false
             }
 
             else -> {
                 binding.confirmPasswordFieldLayout.isErrorEnabled = false
+                true
             }
         }
-
-        return true
     }
 
     private fun setupListeners() {
-        binding.loginField.addTextChangedListener(TextFieldValidation(binding.loginField))
-        binding.passwordField.addTextChangedListener(TextFieldValidation(binding.passwordField))
-        binding.confirmPasswordField.addTextChangedListener(TextFieldValidation(binding.confirmPasswordField))
+        with(binding) {
+            loginField.addTextChangedListener(TextFieldValidation(binding.loginField))
+            passwordField.addTextChangedListener(TextFieldValidation(binding.passwordField))
+            confirmPasswordField.addTextChangedListener(TextFieldValidation(binding.confirmPasswordField))
+        }
     }
 }

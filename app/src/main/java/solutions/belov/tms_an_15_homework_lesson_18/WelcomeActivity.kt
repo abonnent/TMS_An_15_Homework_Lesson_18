@@ -3,45 +3,43 @@ package solutions.belov.tms_an_15_homework_lesson_18
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.google.android.material.textview.MaterialTextView
 import solutions.belov.tms_an_15_homework_lesson_18.databinding.ActivityLoginBinding
 import solutions.belov.tms_an_15_homework_lesson_18.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {
-    lateinit var binding: ActivityWelcomeBinding
+    private lateinit var binding: ActivityWelcomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val extras = intent.extras
-        if (extras != null) {
+        intent.extras?.let {
             with(binding) {
-                if (extras.getBoolean("CB1")) {
-                    cb1.visibility = View.VISIBLE
-                    loginField.text = getString(R.string.login_field, extras.getString("LOGIN"))
+                if (it.getBoolean(CB1)) {
+                    cb1.isVisible = true
+                    loginField.text = getString(R.string.login_field, it.getString(LOGIN))
                     passwordField.text =
-                        getString(R.string.password_field, extras.getString("PASSWORD"))
+                        getString(R.string.password_field, it.getString(PASSWORD))
                 }
 
-                if (extras.getBoolean("CB2")) {
-                    cb2.visibility = View.VISIBLE
-                    loginField.text = getString(R.string.login_field, extras.getString("LOGIN"))
+                if (it.getBoolean(CB2)) {
+                    cb2.isVisible = true
+                    loginField.text = getString(R.string.login_field, it.getString(LOGIN))
                     passwordField.text =
-                        getString(R.string.password_field, extras.getString("PASSWORD"))
+                        getString(R.string.password_field, it.getString(PASSWORD))
                 }
 
-                if (extras.getBoolean("CB3")) {
-                    cb3.visibility = View.VISIBLE
-                    rb.visibility = View.VISIBLE
-                    loginField.text = getString(R.string.login_field, extras.getString("LOGIN"))
-                    passwordField.text =
-                        getString(R.string.password_field, extras.getString("PASSWORD"))
-                    rb.text = getString(R.string.rb_selected, extras.getString("RB"))
+                if (it.getBoolean(CB3)) {
+                    cb3.isVisible = true
+                    rb.isVisible = true
+                    loginField.text = getString(R.string.login_field, it.getString(LOGIN))
+                    passwordField.text = getString(R.string.password_field, it.getString(PASSWORD))
+                    rb.text = getString(R.string.rb_selected, it.getString(RB))
                 }
             }
-
         }
     }
 }
