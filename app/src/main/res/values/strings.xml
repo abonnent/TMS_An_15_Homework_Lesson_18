@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">TMS_An_15_Homework_Lesson_18</string>
+    <string name="login_field_hint">Введите имя</string>
+    <string name="login_field">Твоё имя: %1$s</string>
+    <string name="password_field_hint">Введите ключ</string>
+    <string name="password_field">Твой ключ: %1$s</string>
+    <string name="confirm_password_field_hint">Введите ключ ещё раз</string>
+    <string name="enter_button">Войти</string>
+    <string name="required_field">Необходимо заполнить!</string>
+    <string name="no_less">Ключ должен быть не меньше 6 знаков!</string>
+    <string name="do_not_match">Ключи не совпадают!</string>
+    <string name="cb1">Даю согласие на обработку личных данных</string>
+    <string name="cb2">Хочу подписаться на рассылку</string>
+    <string name="cb3">Не хочу видеть рекламу, готов заплатить!</string>
+
+    <string name="cb1_selected">Дал согласие на обработку личных данных</string>
+    <string name="cb2_selected">Захотел подписаться на рассылку</string>
+    <string name="cb3_selected">Отказался от рекламы, не пожмотничал)</string>
+
+    <string name="how_much">Сколько вы готовы нам платить ежемесячно за отключение рекламы?</string>
+    <string name="rb1">250₽</string>
+    <string name="rb2">500₽</string>
+    <string name="rb3">1000₽</string>
+    <string name="rb_selected">Пожертвовал: %1$s</string>
+    <string name="rb1_msg">Что ж ты жмот-то какой! Красснею из-за тебя тут...</string>
+    <string name="rb2_msg">М-да, весьма скромно =(. А знаешь ли ты, что дети в Африке голодают?!</string>
+    <string name="rb3_msg">Вот) Хоть носков себе прикуплю)</string>
+
+    <string name="validated">Данные заполнены верно!</string>
+</resources>

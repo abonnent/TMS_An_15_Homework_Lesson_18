@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".WelcomeActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/login_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login_field"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/password_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/password_field"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/login_field"
+        app:layout_constraintStart_toStartOf="@id/login_field"
+        app:layout_constraintTop_toBottomOf="@id/login_field" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cb1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/cb1_selected"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/password_field"
+        app:layout_constraintStart_toStartOf="@id/password_field"
+        app:layout_constraintTop_toBottomOf="@id/password_field" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cb2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/cb2_selected"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/cb1"
+        app:layout_constraintStart_toStartOf="@id/cb1"
+        app:layout_constraintTop_toBottomOf="@id/cb1" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cb3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/cb3_selected"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/cb2"
+        app:layout_constraintStart_toStartOf="@id/cb2"
+        app:layout_constraintTop_toBottomOf="@id/cb2" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/rb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/rb_selected"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/cb3"
+        app:layout_constraintStart_toStartOf="@id/cb3"
+        app:layout_constraintTop_toBottomOf="@id/cb3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
